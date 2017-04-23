@@ -187,11 +187,20 @@ public class bubble
       }
     }
     
-    
-      
-      
     public static void main(String[] args)
     {
+      System.out.println("Testing bubble sort new list");
+      System.out.println("Adding 10 random numbers to the list: ");
+      
+      bubble test = new bubble();
+      
+      test.addRandom(10);
+      System.out.println("List not sorted: ");
+      test.traverse();
+      
+      System.out.println("Sorted list: ");
+      test.Sort();
+      test.traverse();
     }
   }
   
