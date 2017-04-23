@@ -96,8 +96,100 @@ public class bubble
     
     public void add(int data)
     {
+      if(isEmpty())
+      {
+        last = new Node(data);
+        first = last;
+      }
+      
+      else
+      {
+        last.next = new Node(data, null);
+        last = last.next;
+      }
     }
     
+    public void traverse()
+    {
+      Node printNode = first;
+      
+      while(printNode != null)
+      {
+        System.out.println(printNode.value);
+        printNode = printNode.next;
+      }
+    }
+    
+    public void addRandom(int randomNode)
+    {
+      int min = 0;
+      int max = 50;
+      
+      for(int i = 0; i < randomNode; i++)
+      {
+        int randomX = min + (int)(Math.random() * max);
+        Node newNode = new Node(randomX); 
+        
+        if(isEmpty())
+        {
+          
+          this.first = newNode;
+          this.last = newNode;
+          
+        }
+        
+        else
+        {
+          newNode.next = first;
+          this.first = newNode;
+        }
+      }
+    }
+    
+    public void Sort()
+    {
+      Node now; 
+      
+      if(isEmpty())
+      {
+        System.out.println("List is empty.");
+      }
+      
+      else if(first.getNext() == null)
+      {
+        System.out.println("There's one node in the list");
+      }
+      
+      else     
+      {
+        now = first;
+        
+        boolean change = true;
+        
+        while(change)
+        {
+          change = false;
+          
+          while(now != null)
+          {
+            if(now.getNext() != null && now.getValue() > now.getNext().getValue())
+            {
+              int temp = now.getValue();
+              now.setValue(now.getNext().getValue());
+              now.getNext().setValue(temp);
+              change = true;
+            }
+            now = now.getNext();
+          }
+          
+          now = first;
+        }
+      }
+    }
+    
+    
+      
+      
     public static void main(String[] args)
     {
     }
